@@ -11,6 +11,7 @@ A RaspberryPI-based automatous system that detects electricity and ISP outages.
 - https://www.kc4rcr.com/power-outage-notification/
 - https://homediyelectronics.com/projects/raspberrypi/poweroffdelay/powerfail
 - https://projects-raspberry.com/power-outage-sensor/
+- https://raspberrypi.stackexchange.com/questions/13538/raspberry-pi-to-email-when-power-outage-occurs
 
 ### Python + RPi
 
