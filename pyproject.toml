@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "outage-detector"
+version = "0.0.1"
+description = "A RaspberryPI-based automatous system that detects electricity and ISP outages"
+authors = ["Roman Glushko <roman.glushko.m@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "outage_detector"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+uvloop = "^0.17.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
