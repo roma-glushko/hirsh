@@ -2,4 +2,7 @@
 dist
 *.pyc
 
+.env
+
 .idea
+tmp

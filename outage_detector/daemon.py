@@ -2,10 +2,9 @@ import asyncio
 import logging
 import signal
 import time
+from typing import Sequence
 
-import uvloop
-
-from outage_detector.monitors import Monitor
+from outage_detector.services.monitors import Monitor
 
 logger = logging.getLogger(__name__)
 
@@ -34,25 +33,22 @@ async def schedule(monitor: Monitor) -> None:
 
 
 class Daemon:
-    def __init__(self, monitors: list[Monitor]) -> None:
+    def __init__(self, monitors: Sequence[Monitor]) -> None:
         self._monitors = monitors
         self._monitor_tasks: list[asyncio.Task] = []
         self._stopping = False
 
-    def start(self) -> None:
-        uvloop.install()
-        asyncio.run(self.run())
-
-    async def run(self) -> None:
-        logger.info("Starting up the outage detector")
+    async def start(self) -> None:
+        logger.info("Starting up the outage monitor")
+        event_loop = asyncio.get_event_loop()
 
         for monitor in self._monitors:
             self._monitor_tasks.append(
                 asyncio.create_task(schedule(monitor)),
             )
 
-        asyncio.get_event_loop().add_signal_handler(signal.SIGTERM, self.stop)
-        asyncio.get_event_loop().add_signal_handler(signal.SIGINT, self.stop)
+        event_loop.add_signal_handler(signal.SIGTERM, self.stop)
+        event_loop.add_signal_handler(signal.SIGINT, self.stop)
 
         await asyncio.gather(*self._monitor_tasks, return_exceptions=True)
 
@@ -66,7 +62,7 @@ class Daemon:
 
         logger.info("Shutting down the outage detector")
 
-        for task, monitor in zip(self._monitor_tasks, self._monitors):
+        for task, _monitor in zip(self._monitor_tasks, self._monitors):
             task.cancel()
 
         self._monitor_tasks.clear()

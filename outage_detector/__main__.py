@@ -1,7 +1,35 @@
-from outage_detector.daemon import Daemon
+import logging
+from asyncio import run as aiorun
+from pathlib import Path
 
-MONITORS = []
+import typer
+import uvloop
+
+from outage_detector.daemon import Daemon
+from outage_detector.runtime import create_runtime
+
+logger = logging.getLogger(__name__)
+
+
+def run(working_dir: Path = "~/.outage-monitor", config_filename: str = "config.yaml") -> None:
+    """
+    Outage Monitor: Be first to know about outages in your apartments
+    """
+    async def __run() -> None:
+        runtime = create_runtime(config_path=working_dir / config_filename)
+
+        logger.debug("Initializing resources..")
+        await runtime.init_resources()
+
+        outage_detector: Daemon = runtime.outage_detector()
+        await outage_detector.start()
+
+        logger.debug("Shutting down resources..")
+        await runtime.shutdown_resources()
+
+    aiorun(__run())
+
 
 if __name__ == "__main__":
-    outage_detector = Daemon(monitors=MONITORS)
-    outage_detector.start()
+    uvloop.install()
+    typer.run(run)

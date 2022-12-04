@@ -2,6 +2,15 @@
 
 A RaspberryPI-based automatous system that detects electricity and ISP outages.
 
+## How does it work?
+
+## Notifications
+
+### Telegram
+
+The primary way to notify you about outages is via [Telegram bot](https://core.telegram.org/bots).
+You need to create [a new bot](https://t.me/BotFather) and add it to a group or a channel.
+
 ## References
 
 ### Similar Projects
