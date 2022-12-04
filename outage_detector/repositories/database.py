@@ -52,5 +52,6 @@ class Database:
 
 async def init_database(database_uri: str) -> Generator[Database, None, None]:
     database = Database(database_uri)
+    await database.create_database()
     yield database
     await database.close()

@@ -5,8 +5,9 @@ from dependency_injector import containers, providers
 
 from outage_detector.config import load_from_yaml
 from outage_detector.daemon import Daemon
+from outage_detector.logging import init_logger
 from outage_detector.repositories import init_database
-from outage_detector.repositories.logs import LogRepository
+from outage_detector.repositories import LogRepository, EventRepository
 from outage_detector.services.monitors import Monitor, NetworkMonitor
 
 logger = logging.getLogger(__name__)
@@ -27,7 +28,7 @@ class Runtime(containers.DeclarativeContainer):
     )
 
     event_repository = providers.Factory(
-        LogRepository,
+        EventRepository,
         session_factory=db.provided.session
     )
 
@@ -41,5 +42,7 @@ def create_runtime(config_path: Path) -> Runtime:
 
     config = load_from_yaml(config_path)
     runtime.config.from_pydantic(config)
+
+    init_logger(log_level=runtime.config.logging.level())
 
     return runtime

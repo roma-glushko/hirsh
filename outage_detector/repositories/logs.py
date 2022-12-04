@@ -6,10 +6,10 @@ class LogRepository:
     Manage monitor logs in the database
     """
 
-    def __init__(self, session_factory):
+    def __init__(self, session_factory) -> None:
         self.session_factory = session_factory
 
-    async def log(self, resource: Resources):
+    async def add_log(self, resource: Resources) -> None:
         async with self.session_factory() as session:
             log = Log(
                 resource=resource,

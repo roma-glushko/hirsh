@@ -17,7 +17,12 @@ class DatabaseConfig(BaseSettings):
     uri: str  # TODO: Create SQLiteDns type (see pydantic.PostgresDsn)
 
 
+class LoggingConfig(BaseSettings):
+    level: str = "INFO"
+
+
 class Config(BaseSettings):
+    logging: LoggingConfig
     database: DatabaseConfig
     telegram: Optional[TelegramConfig]
 
