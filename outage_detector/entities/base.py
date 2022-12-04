@@ -1,4 +1,5 @@
 from enum import Enum
+
 from sqlalchemy.ext.declarative import declarative_base
 
 

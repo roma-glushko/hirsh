@@ -1,6 +1,6 @@
 import logging
 
-from outage_detector.entities import Resources, LogStatus
+from outage_detector.entities import LogStatus, Resources
 from outage_detector.repositories import LogRepository
 from outage_detector.services.network import check_internet_connection
 
@@ -13,6 +13,26 @@ class Monitor:
     async def check(self) -> None:
         raise NotImplementedError()
 
+
+class DaemonMonitor:
+    """
+    Special type of monitors that tracks daemon lifecycle
+    """
+
+    def __init__(self, log_repository: LogRepository) -> None:
+        self._log_repository = log_repository
+
+    async def startup(self) -> None:
+        await self._log_repository.add_log(
+            resource=Resources.DAEMON,
+            status=LogStatus.UP,
+        )
+
+    async def shutdown(self) -> None:
+        await self._log_repository.add_log(
+            resource=Resources.DAEMON,
+            status=LogStatus.DOWN,
+        )
 
 class NetworkMonitor(Monitor):
     def __init__(self, log_repository: LogRepository, check_every_secs: int) -> None:

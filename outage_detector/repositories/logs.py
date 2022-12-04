@@ -1,6 +1,6 @@
-from typing import Optional, Any
+from typing import Any, Optional
 
-from outage_detector.entities import Log, Resources, LogStatus
+from outage_detector.entities import Log, LogStatus, Resources
 
 
 class LogRepository:

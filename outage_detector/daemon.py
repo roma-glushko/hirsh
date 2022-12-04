@@ -4,7 +4,7 @@ import signal
 import time
 from typing import Sequence
 
-from outage_detector.services.monitors import Monitor
+from outage_detector.services.monitors import DaemonMonitor, Monitor
 
 logger = logging.getLogger(__name__)
 
@@ -33,22 +33,25 @@ async def schedule(monitor: Monitor) -> None:
 
 
 class Daemon:
-    def __init__(self, monitors: Sequence[Monitor]) -> None:
+    def __init__(self, lifecycle_monitor: DaemonMonitor, monitors: Sequence[Monitor]) -> None:
+        self._lifecycle_monitor = lifecycle_monitor
         self._monitors = monitors
         self._monitor_tasks: list[asyncio.Task] = []
         self._stopping = False
 
     async def start(self) -> None:
         logger.info("Starting up the outage monitor")
-        event_loop = asyncio.get_event_loop()
+        await self._lifecycle_monitor.startup()
+
+        event_loop = asyncio.get_running_loop()
 
         for monitor in self._monitors:
             self._monitor_tasks.append(
                 asyncio.create_task(schedule(monitor)),
             )
 
-        event_loop.add_signal_handler(signal.SIGTERM, self.stop)
-        event_loop.add_signal_handler(signal.SIGINT, self.stop)
+        for sig in (signal.SIGTERM, signal.SIGINT, signal.SIGQUIT):
+            event_loop.add_signal_handler(sig, self.stop)
 
         await asyncio.gather(*self._monitor_tasks, return_exceptions=True)
 
@@ -59,11 +62,14 @@ class Daemon:
             return
 
         self._stopping = True
-
         logger.info("Shutting down the outage detector")
+
+        # TODO: allow to run async shutdown() method
+        # await self._lifecycle_monitor.shutdown()
 
         for task, _monitor in zip(self._monitor_tasks, self._monitors):
             task.cancel()
 
         self._monitor_tasks.clear()
+
         logger.info("The outage detector has shutdown successfully")

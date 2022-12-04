@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import JSON, Integer, Boolean, Column, DateTime, String
+from sqlalchemy import JSON, Boolean, Column, DateTime, Integer, String
 
 from outage_detector.entities.base import BaseEntity, StrEnum
 

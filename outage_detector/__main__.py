@@ -15,6 +15,7 @@ def run(working_dir: Path = "~/.outage-monitor", config_filename: str = "config.
     """
     Outage Monitor: Be first to know about outages in your apartments
     """
+
     async def __run() -> None:
         runtime = create_runtime(config_path=working_dir / config_filename)
 
