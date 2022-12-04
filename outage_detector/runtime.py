@@ -12,10 +12,6 @@ from outage_detector.services.monitors import Monitor, NetworkMonitor
 
 logger = logging.getLogger(__name__)
 
-MONITORS: tuple[Monitor, ...] = (
-    NetworkMonitor(check_every_secs=60),
-)
-
 
 class Runtime(containers.DeclarativeContainer):
     config = providers.Configuration()
@@ -32,7 +28,11 @@ class Runtime(containers.DeclarativeContainer):
         session_factory=db.provided.session
     )
 
-    outage_detector = providers.Singleton(Daemon, monitors=MONITORS)
+    outage_detector = providers.Singleton(Daemon, monitors=providers.List(
+        providers.Factory(NetworkMonitor, check_every_secs=60, log_repository=log_repository),
+    )
+
+)
 
 
 def create_runtime(config_path: Path) -> Runtime:

@@ -66,4 +66,4 @@ class Daemon:
             task.cancel()
 
         self._monitor_tasks.clear()
-        logger.info("The outage detector has shutdown finished successfully")
+        logger.info("The outage detector has shutdown successfully")

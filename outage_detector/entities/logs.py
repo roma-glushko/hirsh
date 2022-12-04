@@ -1,12 +1,11 @@
+from datetime import datetime
 
-from enum import Enum
+from sqlalchemy import JSON, Integer, Boolean, Column, DateTime, String
 
-from sqlalchemy import JSON, BigInteger, Boolean, Column, DateTime, String
-
-from outage_detector.repositories import BaseEntity
+from outage_detector.entities.base import BaseEntity, StrEnum
 
 
-class LogStatus(str, Enum):
+class LogStatus(StrEnum):
     UP = "up"
     DOWN = "down"
 
@@ -14,8 +13,8 @@ class LogStatus(str, Enum):
 class Log(BaseEntity):
     __tablename__ = "outage_monitor_logs"
 
-    id = Column(BigInteger, primary_key=True, index=True)
-    created_at = Column(DateTime)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
     resource = Column(String(60))
     status = Column(String(60))
     processed = Column(Boolean, default=False)

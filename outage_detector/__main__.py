@@ -21,7 +21,7 @@ def run(working_dir: Path = "~/.outage-monitor", config_filename: str = "config.
         logger.debug("Initializing resources..")
         await runtime.init_resources()
 
-        outage_detector: Daemon = runtime.outage_detector()
+        outage_detector: Daemon = await runtime.outage_detector()
         await outage_detector.start()
 
         logger.debug("Shutting down resources..")

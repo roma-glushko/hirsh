@@ -4,12 +4,11 @@ from contextlib import AbstractAsyncContextManager, asynccontextmanager
 from typing import AsyncGenerator, Generator
 
 from sqlalchemy.ext.asyncio import AsyncSession, async_scoped_session, create_async_engine
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-logger = logging.getLogger(__name__)
+from outage_detector.entities import BaseEntity
 
-BaseEntity = declarative_base()
+logger = logging.getLogger(__name__)
 
 
 class Database:
