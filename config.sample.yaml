@@ -1,0 +1,10 @@
+logging:
+  level: DEBUG
+
+database:
+  uri: sqlite+aiosqlite:///./db.sqlite
+
+telegram:
+  bot_token: "[ADD YOUR OWN TOKEN]"
+  channel_ids:
+    - [ADD YOUR OWN CHANNEL ID]

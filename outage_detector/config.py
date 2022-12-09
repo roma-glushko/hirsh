@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 class TelegramConfig(BaseSettings):
     bot_token: str
-    channel_id: int
+    channel_ids: list[int]
 
 
 class DatabaseConfig(BaseSettings):
