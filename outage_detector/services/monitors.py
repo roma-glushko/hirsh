@@ -42,15 +42,19 @@ class DaemonMonitor:
 
 
 class NetworkMonitor(Monitor):
-    def __init__(self, log_repository: LogRepository, check_every_secs: int) -> None:
+    def __init__(self, log_repository: LogRepository, notifier: Notifier, check_every_secs: int = 60) -> None:
         super().__init__(check_every_secs)
 
         self._log_repository = log_repository
+        self._notifier = notifier
 
     async def check(self) -> None:
         self.logger.debug("Checking network connection")
 
         network_status: bool = await check_internet_connection()
+
+        if network_status:
+            await self._notifier.notify("📡 Network is working at the moment")
 
         await self._log_repository.add_log(
             resource=Resources.NETWORK,

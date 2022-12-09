@@ -45,7 +45,7 @@ class Runtime(containers.DeclarativeContainer):
         Daemon,
         lifecycle_monitor=daemon_monitor,
         monitors=providers.List(
-            Singleton(NetworkMonitor, check_every_secs=60, log_repository=log_repository),
+            Singleton(NetworkMonitor, log_repository=log_repository, notifier=notifier, check_every_secs=60),
         )
     )
 
