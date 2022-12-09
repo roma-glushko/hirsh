@@ -1,8 +1,8 @@
 from collections import defaultdict
 from datetime import datetime
-from typing import Sequence, Any, Optional
+from typing import Any, Optional, Sequence
 
-from outage_detector.entities import Log, Event, Resources, LogStatus
+from outage_detector.entities import Event, Log, LogStatus, Resources
 
 
 class EventFinder:
