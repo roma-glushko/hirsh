@@ -11,7 +11,7 @@ from hirsh.runtime import create_runtime
 logger = logging.getLogger(__name__)
 
 
-def run(working_dir: Path = "~/.outage-monitor", config_filename: str = "config.yaml") -> None:
+def run(working_dir: Path = "~/.hirsh", config_filename: str = "config.yaml") -> None:
     """
     Outage Monitor: Be first to know about outages in your apartments
     """
