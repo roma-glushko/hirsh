@@ -4,7 +4,7 @@ import signal
 import time
 from typing import Sequence
 
-from outage_detector.services.monitors import DaemonMonitor, Monitor
+from hirsh.services.monitors import DaemonMonitor, Monitor
 
 logger = logging.getLogger(__name__)
 

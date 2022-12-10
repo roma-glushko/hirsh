@@ -1,4 +1,4 @@
-SOURCE?=outage_detector
+SOURCE?=hirsh
 
 lint: ## Linting
 	@ruff --fix $(SOURCE)

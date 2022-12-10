@@ -4,12 +4,12 @@ from pathlib import Path
 from dependency_injector import containers, providers
 from dependency_injector.providers import Configuration, Resource, Singleton
 
-from outage_detector.config import load_from_yaml
-from outage_detector.daemon import Daemon
-from outage_detector.logging import init_logger
-from outage_detector.repositories import Database, EventRepository, LogRepository, init_database
-from outage_detector.services.monitors import DaemonMonitor, NetworkMonitor
-from outage_detector.services.notifiers import TelegramNotifier
+from hirsh.config import load_from_yaml
+from hirsh.daemon import Daemon
+from hirsh.logging import init_logger
+from hirsh.repositories import Database, EventRepository, LogRepository, init_database
+from hirsh.services.monitors import DaemonMonitor, NetworkMonitor
+from hirsh.services.notifiers import TelegramNotifier
 
 logger = logging.getLogger(__name__)
 

@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import JSON, Boolean, Column, DateTime, Integer, String
 
-from outage_detector.entities.base import BaseEntity
+from hirsh.entities.base import BaseEntity
 
 
 class Event(BaseEntity):

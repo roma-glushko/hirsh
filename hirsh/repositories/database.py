@@ -6,7 +6,7 @@ from typing import AsyncGenerator, Generator
 from sqlalchemy.ext.asyncio import AsyncSession, async_scoped_session, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
-from outage_detector.entities import BaseEntity
+from hirsh.entities import BaseEntity
 
 logger = logging.getLogger(__name__)
 

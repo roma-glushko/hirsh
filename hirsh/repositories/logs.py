@@ -1,6 +1,6 @@
 from typing import Any, Optional
 
-from outage_detector.entities import Log, LogStatus, Resources
+from hirsh.entities import Log, LogStatus, Resources
 
 
 class LogRepository:

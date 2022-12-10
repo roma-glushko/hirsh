@@ -1,5 +1,5 @@
-from outage_detector.entities import Resources
-from outage_detector.entities.events import Event
+from hirsh.entities import Resources
+from hirsh.entities.events import Event
 
 
 class EventRepository:

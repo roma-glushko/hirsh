@@ -5,8 +5,8 @@ from pathlib import Path
 import typer
 import uvloop
 
-from outage_detector.daemon import Daemon
-from outage_detector.runtime import create_runtime
+from hirsh.daemon import Daemon
+from hirsh.runtime import create_runtime
 
 logger = logging.getLogger(__name__)
 

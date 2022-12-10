@@ -1,9 +1,9 @@
 import logging
 
-from outage_detector.entities import LogStatus, Resources
-from outage_detector.repositories import LogRepository
-from outage_detector.services.network import check_internet_connection
-from outage_detector.services.notifiers import Notifier
+from hirsh.entities import LogStatus, Resources
+from hirsh.repositories import LogRepository
+from hirsh.services.network import check_internet_connection
+from hirsh.services.notifiers import Notifier
 
 
 class Monitor:
