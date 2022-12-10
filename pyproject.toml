@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "outage-detector"
+name = "hirsh"
 version = "0.0.1"
-description = "A RaspberryPI-based automatous system that detects electricity and ISP outages"
+description = "A RaspberryPI-based monitoring system that detects electricity and ISP outages"
 authors = ["Roman Glushko <roman.glushko.m@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "outage_detector"}]
+packages = [{include = "hirsh"}]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"

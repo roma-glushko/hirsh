@@ -1,8 +1,10 @@
-# Outage Detector
+# Hirsh
 
-A RaspberryPI-based automatous system that detects electricity and ISP outages.
+A RaspberryPI-based monitoring system that detects utility outages (ISP, electricity, etc).
 
 ## How does it work?
+
+TBU
 
 ## Notifications
 

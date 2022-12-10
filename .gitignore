@@ -3,6 +3,9 @@ dist
 *.pyc
 
 .env
+.mypy_cache
+.ruff_cache
 
 .idea
 tmp
+db.sqlite
