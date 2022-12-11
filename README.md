@@ -2,6 +2,31 @@
 
 📟 Resilient monitoring system that detects utility outages in unreliable environments (e.g. IoT, RaspberryPi, etc).
 
+Hirsh is designed and optimized for:
+
+- residency, robustness and self-healing 
+- running in resource-constrained IoT-like unstable environments
+
+## Maturity
+
+The project is in MVP and alpha state. 
+
+It's being actively tested using my RaspberryPi Zero 2W under the current unstable Ukrainian infrastructure conditions.
+
+## Setups
+
+- [Only Supported] Basic: The basic setup includes any IoT device or board computer that supports Linux-like OS and Python 3.9+.
+    The device is plugged into the main electricity circuit/outlet along with a router that provides network connection for the device.
+- UPS: TBU
+
+## Monitors
+
+In theory, you can track any utilities your home has (e.g. electricity, network, gas, water, etc.). 
+However, in practice it's the easiest to track:
+
+- network connection [Only Supported]
+- electricity supply
+
 ## How does it work?
 
 TBU
