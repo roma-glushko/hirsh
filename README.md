@@ -9,7 +9,7 @@ Hirsh is designed and optimized for:
 
 ## Maturity
 
-The project is in MVP and alpha state. 
+The project is in early MVP state. 
 
 It's being actively tested using my RaspberryPi Zero 2W under the current unstable Ukrainian infrastructure conditions.
 
