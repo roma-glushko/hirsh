@@ -5,7 +5,7 @@ lint: ## Linting
 	@ruff --fix $(SOURCE)
 	@mypy --pretty $(SOURCE)
 
-requirements.txt:  ## Update requirements.txt file from poetry config
+requirements:  ## Update requirements.txt file from poetry config
 	@poetry export --without-hashes > requirements.txt
 
 service-status:  ## Check status of the hirsh service
