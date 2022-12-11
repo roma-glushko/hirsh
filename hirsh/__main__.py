@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 def run(working_dir: Path = "~/.hirsh", config_filename: str = "config.yaml") -> None:
     """
-    Outage Monitor: Be first to know about outages in your apartments
+    Hirsh: Be first to know about outages in your apartments
     """
 
     async def __run() -> None:
