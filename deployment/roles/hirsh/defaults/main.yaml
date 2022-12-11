@@ -2,6 +2,13 @@
 logging:
   level: DEBUG
 
+repository:
+  url: https://github.com/roma-glushko/hirsh.git
+  # main
+  fetch: 3-service-doesnt-start-on-boot
+  revision: 3-service-doesnt-start-on-boot
+  depth: 2
+
 networking:
   service_name: network.target
 

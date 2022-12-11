@@ -6,8 +6,6 @@ user_service_dir: "{{ home_dir }}/.config/systemd/user"
 project_dir: "{{ projects_dir }}/hirsh"
 venv_dir: "{{ project_dir }}/.venv"
 
-repo_url: https://github.com/roma-glushko/hirsh.git
-
 service_path: "{{ user_service_dir }}/hirsh.service"
 config_path: "{{ working_dir }}/config.yaml"
 pid_path: "{{ working_dir }}/hirsh.pid"
