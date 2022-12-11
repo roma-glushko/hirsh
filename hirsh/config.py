@@ -21,10 +21,15 @@ class LoggingConfig(BaseSettings):
     level: str = "INFO"
 
 
+class MonitoringConfig(BaseSettings):
+    check_every_secs: int = 60
+
+
 class Config(BaseSettings):
     logging: LoggingConfig
     database: DatabaseConfig
     telegram: Optional[TelegramConfig]
+    monitoring: MonitoringConfig
 
 
 class ConfigReadFailed(RuntimeError):

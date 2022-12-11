@@ -9,6 +9,9 @@ filesystem:
   user: roman
   group: roman
 
+monitoring:
+  check_every_secs: 60
+
 telegram:
   bot_token: REPLACEME
   channel_ids: [1000]

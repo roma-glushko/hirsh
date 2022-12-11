@@ -4,6 +4,9 @@ logging:
 database:
   uri: sqlite+aiosqlite:///./db.sqlite
 
+monitoring:
+  check_every_secs: {{ monitoring.check_every_secs }}
+
 telegram:
   bot_token: {{ telegram.bot_token }}
   channel_ids: {{ telegram.channel_ids }}

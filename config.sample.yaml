@@ -1,6 +1,9 @@
 logging:
   level: DEBUG
 
+monitoring:
+  check_every_secs: 60
+
 database:
   uri: sqlite+aiosqlite:///./db.sqlite
 
