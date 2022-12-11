@@ -14,7 +14,9 @@
     owner: "{{ filesystem.user }}"
     group: "{{ filesystem.group }}"
     mode: 0644
-  notify: restart hirsh service
+  notify:
+    - reinstall hirsh service
+    - restart hirsh service
 
 - name: start and enable hirsh service
   become_user: "{{ filesystem.user }}"
