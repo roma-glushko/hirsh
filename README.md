@@ -4,8 +4,8 @@
 
 Hirsh is designed and optimized for:
 
-- residency, robustness and self-healing 
-- running in resource-constrained IoT-like unstable environments
+- 💪 residency, robustness and self-healing 
+- 📟 running in resource-constrained IoT-like unstable environments
 
 ## Maturity
 
@@ -15,7 +15,9 @@ It's being actively tested using my RaspberryPi Zero 2W under the current unstab
 
 ## Setups
 
-- [Only Supported] Basic: The basic setup includes any IoT device or board computer that supports Linux-like OS and Python 3.9+.
+Hirsh can be executed in any IoT device or board computer that supports Linux-like OS and Python 3.9+.
+
+- [Only Supported] Basic: The basic setup includes just the device.
     The device is plugged into the main electricity circuit/outlet along with a router that provides network connection for the device.
 - UPS: TBU
 
