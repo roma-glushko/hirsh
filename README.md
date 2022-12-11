@@ -1,6 +1,6 @@
 # Hirsh
 
-A RaspberryPI-based monitoring system that detects utility outages (ISP, electricity, etc).
+📟 Resilient monitoring system that detects utility outages in unreliable environments (e.g. IoT, RaspberryPi, etc).
 
 ## How does it work?
 
