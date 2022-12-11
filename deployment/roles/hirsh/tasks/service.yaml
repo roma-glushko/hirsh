@@ -1,0 +1,24 @@
+---
+- name: create user service directory
+  file:
+    path: "{{ user_service_dir }}"
+    state: directory
+    owner: "{{ filesystem.user }}"
+    group: "{{ filesystem.group }}"
+    mode: 0750
+
+- name: install hirsh as a service
+  template:
+    src: hirsh.service.j2
+    dest: "{{ service_path }}"
+    owner: "{{ filesystem.user }}"
+    group: "{{ filesystem.group }}"
+    mode: 0644
+
+- name: start and enable hirsh service
+  systemd:
+    name: hirsh
+    scope: user
+    state: started
+    enabled: yes
+  notify: restart hirsh service

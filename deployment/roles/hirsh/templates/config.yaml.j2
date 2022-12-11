@@ -1,0 +1,9 @@
+logging:
+  level: {{ logging.level }}
+
+database:
+  uri: sqlite+aiosqlite:///./db.sqlite
+
+telegram:
+  bot_token: {{ telegram.bot_token }}
+  channel_ids: {{ telegram.channel_ids }}

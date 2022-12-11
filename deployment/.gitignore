@@ -1,0 +1,10 @@
+~
+.orig
+.bak
+.ini
+.cfg
+.retry
+.pyc
+.pyo
+
+vars/secrets.yaml

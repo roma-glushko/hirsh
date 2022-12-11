@@ -1,0 +1,2 @@
+[rpi]
+192.168.0.111 ansible_connection=ssh ansible_user=roman

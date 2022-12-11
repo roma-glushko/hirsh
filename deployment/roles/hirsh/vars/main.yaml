@@ -1,0 +1,16 @@
+---
+home: "/home/{{ filesystem.user }}"
+projects_dir: "{{ home }}/projects"
+project_dir: "{{ projects_dir }}/hirsh"
+venv_dir: "{{ project_dir }}/.venv"
+working_dir: "{{ home }}/.hirsh"
+user_service_dir: "{{ home }}/.config/systemd/user"
+
+repo_url: https://github.com/roma-glushko/hirsh.git
+
+service_path: "{{ user_service_dir }}/hirsh.service"
+config_path: "{{ working_dir }}/config.yaml"
+pid_path: "{{ working_dir }}/hirsh.pid"
+requirements_path: "{{ project_dir }}/requirements.txt"
+python_path: "{{ venv_dir }}/bin/python"
+hirsh_path: "{{ project_dir }}/hirsh"

@@ -1,0 +1,15 @@
+---
+- hosts: rpi
+  name: Install or update Hirsh
+  become: yes
+  gather_facts: false
+  vars_files:
+    - vars/secrets.yaml
+  roles:
+    - { role: hirsh, tags: hirsh }
+
+  tasks:
+    - name: Deployment has been completed successfully
+      debug:
+        msg:
+          - "📟 Hirsh is ready now"

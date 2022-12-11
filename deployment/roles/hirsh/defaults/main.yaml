@@ -1,0 +1,14 @@
+---
+logging:
+  level: DEBUG
+
+networking:
+  service_name: sys-subsystem-net-devices-wlan0.device
+
+filesystem:
+  user: roman
+  group: roman
+
+telegram:
+  bot_token: REPLACEME
+  channel_ids: [1000]

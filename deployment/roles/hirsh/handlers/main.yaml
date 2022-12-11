@@ -1,0 +1,6 @@
+---
+- name: restart hirsh service
+  systemd:
+    name: hirsh
+    scope: user
+    state: restarted
