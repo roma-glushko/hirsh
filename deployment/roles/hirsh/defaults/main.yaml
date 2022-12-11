@@ -3,7 +3,7 @@ logging:
   level: DEBUG
 
 networking:
-  service_name: sys-subsystem-net-devices-wlan0.device
+  service_name: network.target
 
 filesystem:
   user: roman

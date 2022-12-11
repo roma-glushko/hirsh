@@ -12,4 +12,4 @@ service-status:  ## Check status of the hirsh service
 	@systemctl --user status $(SERVICE)
 
 service-logs: ## Checking service logs via journalctl
-	@journalctl --user-unit hirsh
+	@journalctl --user-unit $(SERVICE)

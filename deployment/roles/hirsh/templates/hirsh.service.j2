@@ -1,6 +1,5 @@
 [Unit]
 Description=Home Utilities Monitoring System
-Requires={{ networking.service_name }}
 After=syslog.target {{ networking.service_name }}
 
 [Service]
@@ -14,4 +13,4 @@ PIDFile={{ pid_path }}
 ExecStart={{ python_path }} -m hirsh --working-dir {{ working_dir }}
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
