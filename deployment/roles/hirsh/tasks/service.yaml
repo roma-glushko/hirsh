@@ -16,6 +16,7 @@
     mode: 0644
 
 - name: start and enable hirsh service
+  become_user: "{{ filesystem.user }}"
   systemd:
     name: hirsh
     scope: user
