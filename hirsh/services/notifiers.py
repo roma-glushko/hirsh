@@ -1,6 +1,8 @@
 import logging
 
+
 from aiogram import Bot, types
+from aiogram.utils.exceptions import NetworkError
 
 
 class Notifier:
@@ -16,9 +18,19 @@ class TelegramNotifier(Notifier):
         self._channel_ids = channel_ids
 
     async def notify(self, message: str) -> None:
-        for channel_id in self._channel_ids:
-            await self._bot.send_message(
-                chat_id=channel_id,
-                text=message,
-                disable_notification=False,
+        try:
+            for channel_id in self._channel_ids:
+                await self._bot.send_message(
+                    chat_id=channel_id,
+                    text=message,
+                    disable_notification=False,
+                )
+        except NetworkError:
+            # TODO: Deferred message sending on no connection
+            #  https://github.com/roma-glushko/hirsh/issues/1
+            self.logger.warning(
+                "No internet connection to notify the targets",
+                extra={
+                    "notification": message,
+                },
             )
