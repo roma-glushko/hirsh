@@ -1,5 +1,7 @@
 import logging
 
+import socket
+
 from hirsh.entities import LogStatus, Resources
 from hirsh.repositories import LogRepository
 from hirsh.services.network import check_internet_connection
@@ -24,13 +26,16 @@ class DaemonMonitor:
         self._log_repository = log_repository
         self._notifier = notifier
 
+    def _hostname(self) -> str:
+        return socket.gethostname()
+
     async def startup(self) -> None:
         await self._log_repository.add_log(
             resource=Resources.DAEMON,
             status=LogStatus.UP,
         )
 
-        await self._notifier.notify("📟 Monitor is starting up..")
+        await self._notifier.notify(f"📟 Hirsh ({self._hostname()}) is starting up..")
 
     async def shutdown(self) -> None:
         await self._log_repository.add_log(
@@ -38,7 +43,7 @@ class DaemonMonitor:
             status=LogStatus.DOWN,
         )
 
-        await self._notifier.notify("📟 Monitor is shutting down..")
+        await self._notifier.notify(f"📟 Hirsh ({self._hostname()}) is shutting down..")
 
 
 class NetworkMonitor(Monitor):
@@ -66,4 +71,5 @@ class ElectricityMonitor(Monitor):
     """
     TODO: For the phase 1 of the project, we will implement network monitor only.
         Electricity monitoring could require more effort and planning to implement
+
     """
