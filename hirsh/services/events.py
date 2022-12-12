@@ -6,6 +6,10 @@ from hirsh.entities import Event, Log, LogStatus, Resources
 
 
 class EventFinder:
+    """
+    TODO: Finish the event finder
+      https://github.com/roma-glushko/hirsh/issues/2
+    """
     def __init__(self) -> None:
         ...
 

@@ -2,6 +2,13 @@
 logging:
   level: DEBUG
 
+repository:
+  url: https://github.com/roma-glushko/hirsh.git
+  # main
+  fetch: main
+  revision: main
+  depth: 2
+
 networking:
   service_name: network.target
 

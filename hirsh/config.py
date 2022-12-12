@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 import yaml
-from pydantic import BaseSettings
+from pydantic import BaseSettings, Field
 
 logger = logging.getLogger(__name__)
 
@@ -26,10 +26,10 @@ class MonitoringConfig(BaseSettings):
 
 
 class Config(BaseSettings):
-    logging: LoggingConfig
-    database: DatabaseConfig
-    telegram: Optional[TelegramConfig]
-    monitoring: MonitoringConfig
+    logging: LoggingConfig = Field(default_factory=LoggingConfig)
+    database: DatabaseConfig = Field(default_factory=DatabaseConfig)
+    telegram: Optional[TelegramConfig] = Field(None)
+    monitoring: MonitoringConfig = Field(default_factory=MonitoringConfig)
 
 
 class ConfigReadFailed(RuntimeError):

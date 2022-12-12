@@ -40,7 +40,7 @@ class Daemon:
         self._stopping = False
 
     async def start(self) -> None:
-        logger.info("Starting up the outage monitor")
+        logger.info("Starting up hirsh daemon")
         await self._lifecycle_monitor.startup()
 
         event_loop = asyncio.get_running_loop()
@@ -62,7 +62,7 @@ class Daemon:
             return
 
         self._stopping = True
-        logger.info("Shutting down the outage detector")
+        logger.info("Shutting down hirsh daemon")
 
         # TODO: allow to run async shutdown() method
         # await self._lifecycle_monitor.shutdown()
@@ -72,4 +72,4 @@ class Daemon:
 
         self._monitor_tasks.clear()
 
-        logger.info("The outage detector has shutdown successfully")
+        logger.info("Hirsh daemon has shut down successfully")

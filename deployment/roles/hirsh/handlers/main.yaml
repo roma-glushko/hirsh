@@ -1,4 +1,20 @@
 ---
+- name: disable hirsh service
+  become_user: "{{ filesystem.user }}"
+  systemd:
+    name: hirsh.service
+    scope: user
+    enabled: false
+  listen: reinstall hirsh service
+
+- name: disable hirsh service
+  become_user: "{{ filesystem.user }}"
+  systemd:
+    name: hirsh.service
+    scope: user
+    enabled: true
+  listen: reinstall hirsh service
+
 - name: restart hirsh service
   become_user: "{{ filesystem.user }}"
   systemd:
