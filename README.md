@@ -1,17 +1,18 @@
 # Hirsh
 
-📟 Resilient monitoring system that detects utility outages in unreliable environments (e.g. IoT, RaspberryPi, etc).
+📟 Resilient monitoring system that detects home utility outages in unreliable environments (e.g. IoT, RaspberryPi, etc).
 
 Hirsh is designed and optimized for:
 
-- 💪 residency, robustness and self-healing 
+- 💪 resiliency, robustness and self-healing 
 - 📟 running in resource-constrained IoT-like unstable environments
+- ✨ easy installation, configuration and self-service
 
 ## Maturity
 
 The project is in early MVP state. 
 
-It's being actively tested using my RaspberryPi Zero 2W under the current unstable Ukrainian infrastructure conditions.
+It's being actively tested using my [RaspberryPi Zero 2W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) under [the current unstable 🇺🇦 Ukrainian infrastructure conditions](https://www.ft.com/content/2be7ac39-530f-4c80-8363-f05ec37234eb).
 
 ## Setups
 
@@ -29,16 +30,24 @@ However, in practice it's the easiest to track:
 - network connection [Only Supported]
 - electricity supply
 
-## How does it work?
-
-TBU
-
 ## Notifications
+
+Hirsh is notification agnostic application. It's designed to support rich variety of mediums.
 
 ### Telegram
 
 The primary way to notify you about outages is via [Telegram bot](https://core.telegram.org/bots).
 You need to create [a new bot](https://t.me/BotFather) and add it to a group or a channel.
+
+### Will Add Soon
+
+This is the list of notification sources that will be [added next](https://github.com/roma-glushko/hirsh/issues?q=is%3Aissue+is%3Aopen+label%3Anotifiers).
+
+## How does it work?
+
+Technically, Hirhs is an [asyncio](https://docs.python.org/3/library/asyncio.html) Python3 daemon. 
+It uses SQLite to persist gathered information, process and keep you notified.
+
 
 ## References
 
