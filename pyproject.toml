@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hirsh"
-version = "0.0.1"
+version = "0.0.2"
 description = "Resilient monitoring system that detects utility outages in unreliable environments (e.g. IoT, RaspberryPi, etc)"
 
 authors = ["Roman Glushko <roman.glushko.m@gmail.com>"]
