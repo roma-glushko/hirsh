@@ -5,8 +5,8 @@ logging:
 repository:
   url: https://github.com/roma-glushko/hirsh.git
   # main
-  fetch: 3-service-doesnt-start-on-boot
-  revision: 3-service-doesnt-start-on-boot
+  fetch: main
+  revision: main
   depth: 2
 
 networking:
