@@ -11,7 +11,7 @@ class LogStatus(StrEnum):
 
 
 class Log(BaseEntity):
-    __tablename__ = "outage_monitor_logs"
+    __tablename__ = "hirsh_logs"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     created_at = Column(DateTime, default=datetime.utcnow)
