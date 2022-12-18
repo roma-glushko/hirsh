@@ -10,7 +10,7 @@ def init_logger(log_level: str = "DEBUG", third_party_level: str = "WARNING") ->
         level=log_level,
     )
 
-    logging.getLogger('aiosqlite').setLevel(third_party_level)
-    logging.getLogger('sqlalchemy').setLevel(third_party_level)
-    logging.getLogger('sqlalchemy.engine').setLevel(third_party_level)
-    logging.getLogger('aiogram').setLevel(third_party_level)
+    logging.getLogger("aiosqlite").setLevel(third_party_level)
+    logging.getLogger("sqlalchemy").setLevel(third_party_level)
+    logging.getLogger("sqlalchemy.engine").setLevel(third_party_level)
+    logging.getLogger("aiogram").setLevel(third_party_level)

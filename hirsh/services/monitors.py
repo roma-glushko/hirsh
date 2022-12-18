@@ -1,5 +1,4 @@
 import logging
-
 import socket
 
 from hirsh.entities import LogStatus, Resources

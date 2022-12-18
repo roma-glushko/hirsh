@@ -11,7 +11,7 @@ from hirsh.runtime import create_runtime
 logger = logging.getLogger(__name__)
 
 
-def run(working_dir: Path = "~/.hirsh", config_filename: str = "config.yaml") -> None:
+def run(working_dir: Path = Path("~/.hirsh"), config_filename: str = "config.yaml") -> None:
     """
     Hirsh: Be first to know about outages in your apartments
     """
@@ -20,13 +20,15 @@ def run(working_dir: Path = "~/.hirsh", config_filename: str = "config.yaml") ->
         runtime = create_runtime(config_path=working_dir / config_filename)
 
         logger.debug("Initializing resources..")
-        await runtime.init_resources()
+        if init_resources := runtime.init_resources():
+            await init_resources
 
-        daemon: Daemon = await runtime.daemon()
+        daemon: Daemon = runtime.daemon()
         await daemon.start()
 
         logger.debug("Shutting down resources..")
-        await runtime.shutdown_resources()
+        if shutdown_resources := runtime.shutdown_resources():
+            await shutdown_resources
 
     aiorun(__run())
 
