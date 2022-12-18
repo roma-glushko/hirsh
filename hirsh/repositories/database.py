@@ -1,7 +1,7 @@
 import logging
 from asyncio import current_task
 from contextlib import AbstractAsyncContextManager, asynccontextmanager
-from typing import AsyncGenerator, Generator
+from typing import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession, async_scoped_session, create_async_engine
 from sqlalchemy.orm import sessionmaker
