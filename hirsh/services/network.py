@@ -1,5 +1,4 @@
 import asyncio
-import contextlib
 import socket
 
 
@@ -9,13 +8,13 @@ async def check_internet_connection() -> bool:
     TODO: we may need to try a few times before reporting no internet access
     """
     def _check_connection() -> bool:
-        with contextlib.suppress(OSError):
+        try:
             conn = socket.create_connection(("www.google.com", 80))
             conn.close()
 
             return True
-
-        return False
+        except OSError:
+            return False
 
     loop = asyncio.get_event_loop()
 
