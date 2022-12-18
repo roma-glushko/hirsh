@@ -2,7 +2,7 @@ import logging
 from datetime import datetime
 from typing import AsyncGenerator, Optional, Sequence
 
-from hirsh.entities import Log, Resources, EventContext, EventStatuses
+from hirsh.entities import EventContext, EventStatuses, Log, Resources
 
 
 class EventFinder:

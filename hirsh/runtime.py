@@ -2,7 +2,7 @@ import logging
 from pathlib import Path
 
 from dependency_injector import containers, providers
-from dependency_injector.providers import Configuration, Resource, Singleton, Selector
+from dependency_injector.providers import Configuration, Resource, Selector, Singleton
 
 from hirsh.config import load_from_yaml
 from hirsh.daemon import Daemon
@@ -10,7 +10,7 @@ from hirsh.logging import init_logger
 from hirsh.managers.logs import LogManager
 from hirsh.repositories import Database, EventRepository, LogRepository, init_database
 from hirsh.services.monitors import DaemonMonitor, NetworkMonitor
-from hirsh.services.notifiers import TelegramNotifier, Notifier, StdoutNotifier
+from hirsh.services.notifiers import Notifier, StdoutNotifier, TelegramNotifier
 
 logger = logging.getLogger(__name__)
 

@@ -2,7 +2,7 @@ import asyncio
 import logging
 from typing import Sequence
 
-from hirsh.managers.base import schedule, Manager
+from hirsh.managers.base import Manager, schedule
 from hirsh.services.monitors import Monitor
 
 logger = logging.getLogger(__name__)

@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sqlalchemy import JSON, Boolean, Column, DateTime, Integer, String
 
 from hirsh.entities.base import BaseEntity, Resources, StrEnum
@@ -19,7 +19,7 @@ class EventContext(BaseModel):
     resource: Resources
     status: EventStatuses
     finished: bool = False
-    log_ids: Optional[list[int]] = None  # logs that were grouped into this event
+    log_ids: list[int] = Field(default_factory=list)  # logs that were grouped into this event
 
 
 class Event(BaseEntity):
