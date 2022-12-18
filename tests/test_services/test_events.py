@@ -29,6 +29,7 @@ def dtime(date: str) -> datetime:
                             resource=Resources.NETWORK,
                             status=EventStatuses.UP,
                             log_ids=[0, 1, 2, 3],
+                            finished=True,
                         ),
                         EventContext(
                             started_at=dtime("12/18/2022 12:30:00"),
@@ -55,6 +56,7 @@ def dtime(date: str) -> datetime:
                     resource=Resources.NETWORK,
                     status=EventStatuses.UP,
                     log_ids=[0, 1],
+                    finished=True,
                 ),
                 EventContext(
                     started_at=dtime("12/18/2022 12:30:00"),
@@ -62,6 +64,7 @@ def dtime(date: str) -> datetime:
                     resource=Resources.NETWORK,
                     status=EventStatuses.DOWN,
                     log_ids=[2, 3],
+                    finished=True,
                 ),
                 EventContext(
                     started_at=dtime("12/18/2022 13:10:00"),
@@ -87,12 +90,14 @@ def dtime(date: str) -> datetime:
                             resource=Resources.NETWORK,
                             status=EventStatuses.UP,
                             log_ids=[0, 1],
+                            finished=True,
                         ),
                         EventContext(
                             started_at=dtime("12/18/2022 13:15:00"),
                             ended_at=dtime("12/18/2022 14:00:00"),
                             resource=Resources.DAEMON,
                             status=EventStatuses.DOWN,
+                            finished=True,
                         ),
                         EventContext(
                             started_at=dtime("12/18/2022 13:15:00"),
@@ -100,6 +105,7 @@ def dtime(date: str) -> datetime:
                             resource=Resources.NETWORK,
                             status=EventStatuses.DOWN,
                             log_ids=[2, 3],
+                            finished=True,
                         ),
                         EventContext(
                             started_at=dtime("12/18/2022 14:05:00"),

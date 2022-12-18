@@ -18,7 +18,7 @@ class EventContext(BaseModel):
     ended_at: Optional[datetime] = None
     resource: Resources
     status: EventStatuses
-
+    finished: bool = False
     log_ids: Optional[list[int]] = None  # logs that were grouped into this event
 
 
