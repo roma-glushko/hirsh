@@ -49,7 +49,7 @@ class Database:
         await self._engine.dispose()
 
 
-async def init_database(database_uri: str) -> Generator[Database, None, None]:
+async def init_database(database_uri: str) -> AsyncGenerator[Database, None]:
     database = Database(database_uri)
     await database.create_database()
     yield database

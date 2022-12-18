@@ -13,7 +13,9 @@ clean: ## Clean temporary files
 	@rm -rf htmlcov .coverage
 
 lint: ## Linting
+	@echo "🧹 Ruff"
 	@ruff --fix $(SOURCE)
+	@echo "🧽 MyPy"
 	@mypy --pretty $(SOURCE)
 
 requirements:  ## Update requirements.txt file from poetry config
