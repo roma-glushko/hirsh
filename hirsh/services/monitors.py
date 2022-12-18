@@ -8,8 +8,7 @@ from hirsh.services.notifiers import Notifier
 
 
 class Monitor:
-    def __init__(self, check_every_secs: int) -> None:
-        self.check_every_secs = check_every_secs
+    def __init__(self) -> None:
         self.logger = logging.getLogger(self.__class__.__name__)
 
     async def check(self) -> None:
@@ -46,8 +45,12 @@ class DaemonMonitor:
 
 
 class NetworkMonitor(Monitor):
-    def __init__(self, log_repository: LogRepository, notifier: Notifier, check_every_secs: int = 60) -> None:
-        super().__init__(check_every_secs)
+    def __init__(
+        self,
+        log_repository: LogRepository,
+        notifier: Notifier,
+    ) -> None:
+        super().__init__()
 
         self._log_repository = log_repository
         self._notifier = notifier

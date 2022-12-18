@@ -1,6 +1,5 @@
 import logging
 
-
 from aiogram import Bot, types
 from aiogram.utils.exceptions import NetworkError
 
@@ -8,6 +7,18 @@ from aiogram.utils.exceptions import NetworkError
 class Notifier:
     async def notify(self, message: str) -> None:
         raise NotImplementedError()
+
+
+class StdoutNotifier(Notifier):
+    """
+    No real notifications, log everything to stdout instead
+    """
+
+    def __init__(self) -> None:
+        self.logger = logging.getLogger(self.__class__.__name__)
+
+    async def notify(self, message: str) -> None:
+        self.logger.info(message)
 
 
 class TelegramNotifier(Notifier):

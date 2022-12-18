@@ -10,3 +10,4 @@ from hirsh.services.notifiers import Notifier
 @containers.copy(Runtime)
 class IntegrationRuntime(containers.DeclarativeContainer):
     notifier = Singleton(mock.AsyncMock(spec=Notifier))
+

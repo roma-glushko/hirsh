@@ -13,4 +13,11 @@ class Resources(StrEnum):
     NETWORK = "network"
 
 
+class Setups(StrEnum):
+    """
+    Supported IoT Setups
+    """
+    BASIC = "basic"
+
+
 BaseEntity = declarative_base()
