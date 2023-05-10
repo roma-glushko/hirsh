@@ -32,6 +32,7 @@ SQLAlchemy = {extras = ["asyncio", "mypy"], version = "^1.4.44"}
 PyYAML = "^6.0"
 dependency-injector = "^4.40.0"
 aiosqlite = "^0.17.0"
+ansible = "^7.5.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.0.155"

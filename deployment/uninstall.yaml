@@ -1,0 +1,18 @@
+---
+- hosts: rpi
+  name: Uninstall Hirsh
+  become: yes
+  gather_facts: false
+  vars_files:
+    - vars/secrets.yaml
+  tasks:
+    - name: disable hirsh service
+      become_user: "{{ filesystem.user }}"
+      systemd:
+        name: hirsh.service
+        scope: user
+        enabled: false
+    - name: Deployment has been disabled
+      debug:
+        msg:
+          - "❌ Hirsh is off now"
