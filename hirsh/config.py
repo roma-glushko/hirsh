@@ -5,6 +5,8 @@ from typing import Any, Optional
 import yaml
 from pydantic import BaseSettings, Field
 
+from hirsh.entities.notifiers import Notifiers
+
 logger = logging.getLogger(__name__)
 
 
@@ -25,10 +27,15 @@ class MonitoringConfig(BaseSettings):
     check_every_secs: int = 60
 
 
+class NotificationConfig(BaseSettings):
+    type: Notifiers = Notifiers.TELEGRAM
+    telegram: Optional[TelegramConfig] = Field(None)
+
+
 class Config(BaseSettings):
     logging: LoggingConfig = Field(default_factory=LoggingConfig)
     database: DatabaseConfig = Field(default_factory=DatabaseConfig)
-    telegram: Optional[TelegramConfig] = Field(None)
+    notifications: NotificationConfig = Field(default_factory=NotificationConfig)
     monitoring: MonitoringConfig = Field(default_factory=MonitoringConfig)
 
 

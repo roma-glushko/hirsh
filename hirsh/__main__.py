@@ -11,19 +11,27 @@ from hirsh.runtime import create_runtime
 logger = logging.getLogger(__name__)
 
 
-def run(working_dir: Path = Path("~/.hirsh"), config_filename: str = "config.yaml") -> None:
+def run(
+    working_dir: Path = typer.Option("~/.hirsh", exists=True, readable=True),  # noqa: B008
+    config_filename: str = "config.yaml",
+) -> None:
     """
     Hirsh: Be first to know about outages in your apartments
     """
 
+    config_path: Path = working_dir / config_filename
+
+    if not config_path.exists() or not config_path.is_file():
+        raise ValueError(f"Make sure the config file {config_path} exists and it's readable")
+
     async def __run() -> None:
-        runtime = create_runtime(config_path=working_dir / config_filename)
+        runtime = create_runtime(config_path=config_path)
 
         logger.debug("Initializing resources..")
         if init_resources := runtime.init_resources():
             await init_resources
 
-        daemon: Daemon = runtime.daemon()
+        daemon: Daemon = await runtime.daemon()
         await daemon.start()
 
         logger.debug("Shutting down resources..")
